@@ -5,7 +5,7 @@ import Info from "../../components/Info"
 import Repositories from '../../components/Repositories';
 
 const Profile = () => {
-    const { username } = useParams();
+    const { username } = useParams() || { username: ''};
     const [profile, setProfile] = useState({});
 
     useEffect( async () => {
@@ -16,7 +16,7 @@ const Profile = () => {
         profile.stars = stars.length || 0;
 
         setProfile(profile);
-    }, []);
+    }, username);
 
     return (    
         <div id="profile">
