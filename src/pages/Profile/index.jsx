@@ -1,4 +1,4 @@
-import React, { useEffect, useState }  from 'react';
+import React, { useEffect, useState, useCallback }  from 'react';
 import { useParams } from 'react-router-dom';
 import './style.css';
 import Info from "../../components/Info"
@@ -8,7 +8,7 @@ const Profile = () => {
     const { username } = useParams() || { username: ''};
     const [profile, setProfile] = useState({});
 
-    useEffect( async () => {
+    const fetchMyAPI = useCallback(async () => {
         const response = await fetch(`https://api.github.com/users/${username}`);
         const profile = await response.json();
 
@@ -16,7 +16,11 @@ const Profile = () => {
         profile.stars = stars.length || 0;
 
         setProfile(profile);
-    }, username);
+    }, [username]);
+
+    useEffect( () => {
+        fetchMyAPI();
+    }, [fetchMyAPI]);
 
     return (    
         <div id="profile">

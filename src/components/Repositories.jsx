@@ -1,6 +1,6 @@
 
 import styled from 'styled-components';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import star from '../assets/images/star.png';
 
 const RepositoriesWrapper = styled.div`
@@ -73,11 +73,15 @@ const Repository = styled.div`
 const Repositories = ({ username }) => {
     const [repositories, setRepositories] = useState([]);
 
-    useEffect( async () => {
+    const fetchMyAPI = useCallback(async () => {
         const response = await fetch(`https://api.github.com/users/${username}/repos`);
         const repositories = await response.json() || [];
         setRepositories(repositories);
-    }, []);
+    }, [username]);
+
+    useEffect(() => {
+        fetchMyAPI();
+    }, [fetchMyAPI]);
 
     return (
         <RepositoriesWrapper>
@@ -86,7 +90,7 @@ const Repositories = ({ username }) => {
                     <div className="name"> { repo.name }</div>
                     <div className="description"> { repo.description }</div>
                     <div className="repo-info">
-                        <span className="stars"> <img src={star} /> { repo.stargazers_count }</span>
+                        <span className="stars"> <img src={star} alt="Estrelas" /> { repo.stargazers_count }</span>
                         <span className="update"> • { repo.updated_at }</span>
                     </div>
                 </Repository>

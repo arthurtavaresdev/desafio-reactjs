@@ -26,7 +26,7 @@ const IconAndText = ({ icon, title, small }) => {
     if(title){
         return (
             <IconText small={small} >
-                <img src={ icon } />
+                <img src={ icon } alt="Icone" />
                 <span> { title } </span>
             </IconText>
         );

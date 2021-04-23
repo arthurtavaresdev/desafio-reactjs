@@ -88,7 +88,7 @@ const Info = ({ profile }) => {
     return (
         <InfoDiv>
                 <ImageWrapper>
-                    <img src={ profile.avatar_url } />
+                    <img src={ profile.avatar_url } alt="Foto de perfil no github" />
                 </ImageWrapper>
 
                 <Name> { profile.name } </Name>

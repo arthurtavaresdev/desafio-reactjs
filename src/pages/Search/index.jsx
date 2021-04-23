@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './style.css';
 import icon from "../../assets/images/search.png";
 
@@ -18,7 +18,7 @@ const Search = ({ title }) => {
             <div className="form-and-button">
                 <input onChange={ event => setUsername(event.target.value) } 
                     placeholder="Type the username here..." />
-                <button type="submit" className="btn"> <img src={icon} /> Buscar </button>
+                <button type="submit" className="btn"> <img src={icon} alt="Botão pesquisar" /> Buscar </button>
             </div>
         </form>
     );
