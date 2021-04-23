@@ -1,0 +1,9 @@
+#profile {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-auto-flow: column;
+}
+
+.repositories {
+  background: #d1d5dd;
+}
