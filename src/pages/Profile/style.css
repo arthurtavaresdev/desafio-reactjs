@@ -7,3 +7,9 @@
 .repositories {
   background: #d1d5dd;
 }
+
+@media (max-width: 600px) {
+  #profile {
+    display: unset;
+  }
+}
